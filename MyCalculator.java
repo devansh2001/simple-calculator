@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -54,13 +56,18 @@ public class MyCalculator extends Application {
         container.setPadding(new Insets(30));
 
         // Code to make the buttons work
-        add.setOnAction(e -> {
-            double num1 = Double.parseDouble(number_1.getText());
-            double num2 = Double.parseDouble(number_2.getText());
-            double answer = num1 + num2;
-            result.setText(answer + "");
+        // Using Anonymous Inner Classes
+        add.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent event) {
+                double num1 = Double.parseDouble(number_1.getText());
+                double num2 = Double.parseDouble(number_2.getText());
+                double answer = num1 + num2;
+                result.setText(answer + "");
+            }
         });
 
+        // Using Lambda Expressions
         subtract.setOnAction(e -> {
             double num1 = Double.parseDouble(number_1.getText());
             double num2 = Double.parseDouble(number_2.getText());
